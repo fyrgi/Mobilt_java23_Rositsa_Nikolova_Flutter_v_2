@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  String _selectedLevel = "Beginner"; // Default selected level
+  String _selectedLevel = "beginner"; // Default selected level
   List<dynamic> _poses = []; // Stores the fetched poses
 
   Future<void> fetchPoses(String level) async {
@@ -23,11 +23,10 @@ class _HomePageState extends State<HomePage> {
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
 
-      // Assuming 'poses' is the key containing the list of poses in the API response.
       if (data is Map<String, dynamic> && data.containsKey('poses')) {
         setState(() {
           _poses = data['poses']; // Extract the list of poses
-          _selectedLevel = level; // Update the selected level
+          _selectedLevel = level;
         });
       } else {
         throw Exception('Unexpected API response format');
