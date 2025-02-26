@@ -105,13 +105,11 @@ class _HomePageState extends State<HomePage> {
                         : Icon(Icons.image_not_supported),
                     title: GestureDetector(
                       onTap: () {
-                        Navigator.push(
+                        String pid = pose['id'].toString();
+                        Navigator.pushNamed(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => PosePage(
-                              poseId: pose['id'], // Pass pose ID to PosePage
-                            ),
-                          ),
+                          '/pose',
+                          arguments: {'poseId': pose['id']}, // passing the pose id
                         );
                       },
                       child: Text(
